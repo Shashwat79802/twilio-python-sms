@@ -1,0 +1,58 @@
+version: api.keploy.io/v1beta2
+kind: Http
+name: test-1
+spec:
+    metadata: {}
+    req:
+        method: POST
+        proto_major: 1
+        proto_minor: 1
+        url: http://127.0.0.1:8000/send-sms/
+        header:
+            Accept: '*/*'
+            Accept-Encoding: gzip, deflate, br
+            Connection: keep-alive
+            Content-Length: "77"
+            Content-Type: application/json
+            Host: 127.0.0.1:8000
+            Postman-Token: 7b7d1994-821f-444d-9016-a140f60e30e7
+            User-Agent: PostmanRuntime/7.34.0
+        body: |-
+            {
+                "Body": "Hello there!! I'm from keploy :)",
+                "To": "+917000043797"
+            }
+        body_type: ""
+        timestamp: 2023-11-08T11:25:58.988866989+05:30
+    resp:
+        status_code: 200
+        header:
+            Content-Length: "334"
+            Content-Type: application/json
+            Date: Wed, 08 Nov 2023 05:55:58 GMT
+            Server: uvicorn
+        body: '{"message":"HTTPSConnectionPool(host=''api.twilio.com'', port=443): Max retries exceeded with url: /2010-04-01/Accounts/AC19413687d9ce28c80cda944730f8b286/Messages.json (Caused by SSLError(SSLCertVerificationError(1, ''[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1007)'')))"}'
+        body_type: ""
+        status_message: ""
+        proto_major: 0
+        proto_minor: 0
+        timestamp: 2023-11-08T11:26:01.50316531+05:30
+    objects: []
+    assertions:
+        noise:
+            - header.Date
+    created: 1699422961
+curl: |-
+    curl --request POST \
+      --url http://127.0.0.1:8000/send-sms/ \
+      --header 'Postman-Token: 7b7d1994-821f-444d-9016-a140f60e30e7' \
+      --header 'Host: 127.0.0.1:8000' \
+      --header 'Accept-Encoding: gzip, deflate, br' \
+      --header 'Connection: keep-alive' \
+      --header 'Content-Type: application/json' \
+      --header 'User-Agent: PostmanRuntime/7.34.0' \
+      --header 'Accept: */*' \
+      --data '{
+        "Body": "Hello there!! I'm from keploy :)",
+        "To": "+917000043797"
+    }'
